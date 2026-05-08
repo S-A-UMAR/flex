@@ -1,5 +1,6 @@
 import React from 'react';
-import { Bitcoin, Gamepad2, Smartphone, Instagram, Facebook, Music2 } from 'lucide-react';
+import { Gamepad2, Smartphone, Music2, ArrowRight, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
 
 const services = [
@@ -29,8 +30,8 @@ const services = [
     desc: 'Buy/Sell aged TikTok, Instagram, and Facebook accounts.',
     icon: <div style={{ display: 'flex', gap: '0.5rem' }}>
             <Music2 size={24} color="#00F2EA" />
-            <Facebook size={24} color="#1877F2" />
-            <Instagram size={24} color="#E4405F" />
+            <Globe size={24} color="#1877F2" />
+            <Globe size={24} color="#E4405F" />
           </div>,
     size: 'col-span-2',
     msg: WHATSAPP_MSGS.BUY('Instagram Account', '10k Followers')
@@ -38,40 +39,84 @@ const services = [
 ];
 
 const BentoGrid = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  };
+
   return (
     <section className="container" style={{ padding: '4rem 0' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.2rem', fontWeight: 900 }}>
+      <motion.h2 
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.2rem', fontWeight: 900 }}
+      >
         MOBILE <span className="gold-text">TRADING HUB</span>
-      </h2>
-      <div className="bento-grid">
+      </motion.h2>
+      <motion.div 
+        className="bento-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {services.map((service, index) => (
-          <div
+          <motion.a
             key={index}
+            href={generateWhatsAppLink(service.msg)}
+            target="_blank"
+            rel="noreferrer"
+            variants={itemVariants}
+            whileHover={{ y: -8, boxShadow: '0 15px 40px rgba(212, 175, 55, 0.2)' }}
             className="glass-card"
             style={{
               padding: '2rem',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              gridColumn: service.size === 'col-span-2' ? 'span 2' : 'span 1'
+              gridColumn: service.size === 'col-span-2' ? 'span 2' : 'span 1',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease'
             }}
           >
             <div>
-              <div style={{ marginBottom: '1rem' }}>{service.icon}</div>
+              <motion.div 
+                style={{ marginBottom: '1rem' }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                {service.icon}
+              </motion.div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{service.title}</h3>
               <p style={{ color: '#8892B0', fontSize: '0.9rem' }}>{service.desc}</p>
             </div>
-            <a 
-              href={generateWhatsAppLink(service.msg)}
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#D4AF37', textDecoration: 'none', fontWeight: '900', marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', textTransform: 'uppercase' }}
+            <motion.div 
+              style={{ color: '#D4AF37', fontWeight: '900', marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', textTransform: 'uppercase' }}
+              whileHover={{ gap: '0.75rem' }}
+              transition={{ duration: 0.3 }}
             >
-              Get Rates →
-            </a>
-          </div>
+              Get Rates <ArrowRight size={16} />
+            </motion.div>
+          </motion.a>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

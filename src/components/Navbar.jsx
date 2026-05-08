@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Zap, Activity } from 'lucide-react';
+import { Zap, Activity, ShoppingCart, Heart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const { getCartCount, wishlist } = useCart();
+  const cartCount = getCartCount();
+  const wishlistCount = wishlist.length;
 
   return (
     <nav style={{
@@ -26,7 +30,7 @@ const Navbar = () => {
         </Link>
 
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          {['Market', 'Swap', 'Verify'].map((item) => (
+          {['Market', 'Shop', 'Swap', 'Verify'].map((item) => (
             <Link 
               key={item}
               to={`/${item.toLowerCase()}`}
@@ -43,6 +47,91 @@ const Navbar = () => {
               {item}
             </Link>
           ))}
+          
+          {/* Wishlist Icon */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            style={{ position: 'relative' }}
+          >
+            <Link 
+              to="/wishlist"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: location.pathname === '/wishlist' ? '#D4AF37' : '#CCD6F6',
+                textDecoration: 'none',
+                transition: 'color 0.3s'
+              }}
+            >
+              <Heart size={20} />
+            </Link>
+            {wishlistCount > 0 && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                style={{
+                  position: 'absolute',
+                  top: '-8px',
+                  right: '-8px',
+                  background: 'linear-gradient(135deg, var(--gold), #B8860B)',
+                  color: 'var(--navy)',
+                  borderRadius: '50%',
+                  width: '20px',
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.75rem',
+                  fontWeight: '700'
+                }}
+              >
+                {wishlistCount}
+              </motion.div>
+            )}
+          </motion.div>
+
+          {/* Cart Icon */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            style={{ position: 'relative' }}
+          >
+            <Link 
+              to="/cart"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: location.pathname === '/cart' ? '#D4AF37' : '#CCD6F6',
+                textDecoration: 'none',
+                transition: 'color 0.3s'
+              }}
+            >
+              <ShoppingCart size={20} />
+            </Link>
+            {cartCount > 0 && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                style={{
+                  position: 'absolute',
+                  top: '-8px',
+                  right: '-8px',
+                  background: 'linear-gradient(135deg, var(--gold), #B8860B)',
+                  color: 'var(--navy)',
+                  borderRadius: '50%',
+                  width: '20px',
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.75rem',
+                  fontWeight: '700'
+                }}
+              >
+                {cartCount}
+              </motion.div>
+            )}
+          </motion.div>
+
           <div style={{ 
             display: 'flex', 
             alignItems: 'center', 
