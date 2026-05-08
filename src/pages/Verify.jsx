@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, ShieldCheck, UserCheck, Globe, Youtube, Instagram, Music2 } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, UserCheck, Globe, Music2 } from 'lucide-react';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
 import FloatingCP from '../components/FloatingCP';
 
@@ -75,7 +75,7 @@ const Verify = () => {
           {[
             { name: 'TikTok', icon: <Music2 size={18} /> },
             { name: 'Facebook', icon: <Globe size={18} /> },
-            { name: 'Instagram', icon: <Instagram size={18} /> }
+            { name: 'Instagram', icon: <Globe size={18} /> }
           ].map(platform => (
             <a
               key={platform.name}
