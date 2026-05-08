@@ -17,13 +17,13 @@ const Navbar = () => {
       width: '100%',
       zIndex: 1000,
       padding: '1rem 0',
-      background: 'rgba(10, 25, 47, 0.8)',
+      background: 'rgba(13, 27, 42, 0.85)',
       backdropFilter: 'blur(10px)',
-      borderBottom: '1px solid rgba(212, 175, 55, 0.1)'
+      borderBottom: '1px solid rgba(0, 217, 255, 0.1)'
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-          <Zap color="#D4AF37" size={32} />
+          <Zap color="#FF006E" size={32} />
           <span style={{ fontWeight: '900', fontSize: '1.8rem', color: '#FFF', letterSpacing: '2px' }}>
             FLEX
           </span>
@@ -35,7 +35,7 @@ const Navbar = () => {
               key={item}
               to={`/${item.toLowerCase()}`}
               style={{
-                color: location.pathname === `/${item.toLowerCase()}` ? '#D4AF37' : '#CCD6F6',
+                color: location.pathname === `/${item.toLowerCase()}` ? '#FF006E' : '#E8F4F8',
                 textDecoration: 'none',
                 fontWeight: '600',
                 fontSize: '0.9rem',
@@ -58,7 +58,7 @@ const Navbar = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                color: location.pathname === '/wishlist' ? '#D4AF37' : '#CCD6F6',
+                color: location.pathname === '/wishlist' ? '#FF006E' : '#E8F4F8',
                 textDecoration: 'none',
                 transition: 'color 0.3s'
               }}
@@ -73,8 +73,8 @@ const Navbar = () => {
                   position: 'absolute',
                   top: '-8px',
                   right: '-8px',
-                  background: 'linear-gradient(135deg, var(--gold), #B8860B)',
-                  color: 'var(--navy)',
+                  background: 'linear-gradient(135deg, var(--pink), #FF1493)',
+                  color: '#fff',
                   borderRadius: '50%',
                   width: '20px',
                   height: '20px',
@@ -100,7 +100,7 @@ const Navbar = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                color: location.pathname === '/cart' ? '#D4AF37' : '#CCD6F6',
+                color: location.pathname === '/cart' ? '#FF006E' : '#E8F4F8',
                 textDecoration: 'none',
                 transition: 'color 0.3s'
               }}
@@ -115,8 +115,8 @@ const Navbar = () => {
                   position: 'absolute',
                   top: '-8px',
                   right: '-8px',
-                  background: 'linear-gradient(135deg, var(--gold), #B8860B)',
-                  color: 'var(--navy)',
+                  background: 'linear-gradient(135deg, var(--pink), #FF1493)',
+                  color: '#fff',
                   borderRadius: '50%',
                   width: '20px',
                   height: '20px',

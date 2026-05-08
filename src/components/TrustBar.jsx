@@ -3,17 +3,17 @@ import { motion } from 'framer-motion';
 import { CheckCircle, ShieldCheck, Zap, Award, Users, Lock } from 'lucide-react';
 
 const badges = [
-  { icon: <CheckCircle size={18} />, text: 'Verified Dealer', color: '#4CAF50' },
-  { icon: <ShieldCheck size={18} />, text: 'Secure Transactions', color: '#2196F3' },
-  { icon: <Zap size={18} />, text: 'Instant Delivery', color: '#FF9800' },
-  { icon: <Award size={18} />, text: 'Top Rated 2024', color: '#D4AF37' },
-  { icon: <Users size={18} />, text: '10K+ Happy Customers', color: '#9C27B0' },
-  { icon: <Lock size={18} />, text: '100% Trusted', color: '#00BCD4' },
+  { icon: <CheckCircle size={18} />, text: 'Verified Dealer', color: '#FF006E' },
+  { icon: <ShieldCheck size={18} />, text: 'Secure Transactions', color: '#00D9FF' },
+  { icon: <Zap size={18} />, text: 'Instant Delivery', color: '#FF006E' },
+  { icon: <Award size={18} />, text: 'Top Rated 2024', color: '#00D9FF' },
+  { icon: <Users size={18} />, text: '10K+ Happy Customers', color: '#FF006E' },
+  { icon: <Lock size={18} />, text: '100% Trusted', color: '#00D9FF' },
 ];
 
 const TrustBar = () => {
   return (
-    <section style={{ padding: '3rem 0', background: 'rgba(212, 175, 55, 0.05)', borderTop: '1px solid rgba(212, 175, 55, 0.2)', borderBottom: '1px solid rgba(212, 175, 55, 0.2)' }}>
+    <section style={{ padding: '3rem 0', background: 'rgba(255, 0, 110, 0.05)', borderTop: '1px solid rgba(0, 217, 255, 0.2)', borderBottom: '1px solid rgba(0, 217, 255, 0.2)' }}>
       <div className="container">
         <h3 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.3rem', fontWeight: '700' }}>
           WHY <span className="gold-text">CHOOSE FLEX</span>
@@ -55,7 +55,7 @@ const TrustBar = () => {
                   {badge.icon}
                 </motion.div>
               </div>
-              <p style={{ fontSize: '0.85rem', fontWeight: '700', color: '#CCD6F6' }}>
+              <p style={{ fontSize: '0.85rem', fontWeight: '700', color: '#E8F4F8' }}>
                 {badge.text}
               </p>
             </motion.div>
