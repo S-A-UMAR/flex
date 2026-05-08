@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Zap, Activity, ShoppingCart, Heart } from 'lucide-react';
+import { ShoppingCart, Heart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
@@ -17,34 +17,65 @@ const Navbar = () => {
       width: '100%',
       zIndex: 1000,
       padding: '1rem 0',
-      background: 'rgba(13, 27, 42, 0.85)',
-      backdropFilter: 'blur(10px)',
-      borderBottom: '1px solid rgba(0, 217, 255, 0.1)'
+      background: 'rgba(10, 15, 26, 0.9)',
+      backdropFilter: 'blur(20px)',
+      borderBottom: '1px solid rgba(0, 212, 170, 0.1)'
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-          <Zap color="#FF006E" size={32} />
-          <span style={{ fontWeight: '900', fontSize: '1.8rem', color: '#FFF', letterSpacing: '2px' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+          <img 
+            src="/logo.jpg" 
+            alt="FLEX Logo" 
+            style={{ 
+              width: '36px', 
+              height: '36px', 
+              borderRadius: '8px',
+              objectFit: 'cover'
+            }} 
+          />
+          <span style={{ 
+            fontWeight: '900', 
+            fontSize: '1.6rem', 
+            background: 'linear-gradient(to right, var(--teal), var(--cyan))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '3px' 
+          }}>
             FLEX
           </span>
         </Link>
 
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
           {['Market', 'Shop', 'Swap', 'Verify'].map((item) => (
             <Link 
               key={item}
               to={`/${item.toLowerCase()}`}
               style={{
-                color: location.pathname === `/${item.toLowerCase()}` ? '#FF006E' : '#E8F4F8',
+                color: location.pathname === `/${item.toLowerCase()}` ? 'var(--teal)' : 'var(--text-primary)',
                 textDecoration: 'none',
                 fontWeight: '600',
-                fontSize: '0.9rem',
+                fontSize: '0.85rem',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
-                transition: 'color 0.3s'
+                transition: 'color 0.3s',
+                position: 'relative'
               }}
             >
               {item}
+              {location.pathname === `/${item.toLowerCase()}` && (
+                <motion.div
+                  layoutId="activeNav"
+                  style={{
+                    position: 'absolute',
+                    bottom: '-6px',
+                    left: 0,
+                    right: 0,
+                    height: '2px',
+                    background: 'linear-gradient(to right, var(--teal), var(--cyan))',
+                    borderRadius: '2px'
+                  }}
+                />
+              )}
             </Link>
           ))}
           
@@ -58,7 +89,7 @@ const Navbar = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                color: location.pathname === '/wishlist' ? '#FF006E' : '#E8F4F8',
+                color: location.pathname === '/wishlist' ? 'var(--teal)' : 'var(--text-primary)',
                 textDecoration: 'none',
                 transition: 'color 0.3s'
               }}
@@ -73,15 +104,15 @@ const Navbar = () => {
                   position: 'absolute',
                   top: '-8px',
                   right: '-8px',
-                  background: 'linear-gradient(135deg, var(--pink), #FF1493)',
-                  color: '#fff',
+                  background: 'linear-gradient(135deg, var(--teal), var(--cyan))',
+                  color: '#0A0F1A',
                   borderRadius: '50%',
-                  width: '20px',
-                  height: '20px',
+                  width: '18px',
+                  height: '18px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.75rem',
+                  fontSize: '0.7rem',
                   fontWeight: '700'
                 }}
               >
@@ -100,7 +131,7 @@ const Navbar = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                color: location.pathname === '/cart' ? '#FF006E' : '#E8F4F8',
+                color: location.pathname === '/cart' ? 'var(--teal)' : 'var(--text-primary)',
                 textDecoration: 'none',
                 transition: 'color 0.3s'
               }}
@@ -115,15 +146,15 @@ const Navbar = () => {
                   position: 'absolute',
                   top: '-8px',
                   right: '-8px',
-                  background: 'linear-gradient(135deg, var(--pink), #FF1493)',
-                  color: '#fff',
+                  background: 'linear-gradient(135deg, var(--teal), var(--cyan))',
+                  color: '#0A0F1A',
                   borderRadius: '50%',
-                  width: '20px',
-                  height: '20px',
+                  width: '18px',
+                  height: '18px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.75rem',
+                  fontSize: '0.7rem',
                   fontWeight: '700'
                 }}
               >
@@ -136,15 +167,17 @@ const Navbar = () => {
             display: 'flex', 
             alignItems: 'center', 
             gap: '0.5rem', 
-            background: 'rgba(0, 255, 0, 0.05)', 
+            background: 'rgba(0, 212, 170, 0.1)', 
             padding: '6px 14px', 
             borderRadius: '20px',
-            border: '1px solid rgba(0, 255, 0, 0.2)'
+            border: '1px solid rgba(0, 212, 170, 0.2)'
           }}>
-            <div
-              style={{ width: 6, height: 6, borderRadius: '50%', background: '#00FF00', opacity: 0.8 }}
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--teal)' }}
             />
-            <span style={{ fontSize: '0.7rem', color: '#00FF00', fontWeight: '900', textTransform: 'uppercase' }}>Online</span>
+            <span style={{ fontSize: '0.7rem', color: 'var(--teal)', fontWeight: '700', textTransform: 'uppercase' }}>Online</span>
           </div>
         </div>
       </div>

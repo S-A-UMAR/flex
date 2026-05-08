@@ -1,40 +1,39 @@
 import React from 'react';
-import { Gamepad2, Smartphone, Music2, ArrowRight, Globe } from 'lucide-react';
+import { Smartphone, Laptop, Gamepad2, Headphones, Fan, Tablet, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
-    title: 'CODM CP Load',
-    desc: 'Instant COD Points loading. 80 CP to 10,800 CP available now.',
-    icon: <Gamepad2 size={32} color="#FF006E" />,
+    title: 'Latest Phones',
+    desc: 'iPhone 15, Samsung Galaxy, Google Pixel and more flagship devices.',
+    icon: <Smartphone size={32} color="var(--teal)" />,
     size: 'col-span-2',
-    msg: WHATSAPP_MSGS.CURRENCY('CODM CP', '10800')
+    category: 'phones'
   },
   {
-    title: 'Elite Accounts',
-    desc: 'Verified CODM Mythic & Legendary accounts for pro players.',
-    icon: <Gamepad2 size={32} color="#00D9FF" />,
+    title: 'Gaming Gear',
+    desc: 'Pro controllers, gaming gloves, and accessories.',
+    icon: <Gamepad2 size={32} color="var(--cyan)" />,
     size: 'col-span-1',
-    msg: WHATSAPP_MSGS.BUY('CODM Mythic Account', 'Elite')
+    category: 'gamepads'
   },
   {
-    title: 'Tech Swap',
-    desc: 'Trade your iPhone or Laptop for the latest models instantly.',
-    icon: <Smartphone size={32} color="#FF006E" />,
+    title: 'Premium Audio',
+    desc: 'AirPods, Sony, Bose - top earbuds and headphones.',
+    icon: <Headphones size={32} color="var(--teal)" />,
     size: 'col-span-1',
-    msg: WHATSAPP_MSGS.SWAP('iPhone 13', 'iPhone 15 Pro')
+    category: 'airpods'
   },
   {
-    title: 'Social Assets',
-    desc: 'Buy/Sell aged TikTok, Instagram, and Facebook accounts.',
+    title: 'Laptops & iPads',
+    desc: 'MacBooks, gaming laptops, tablets for work and play.',
     icon: <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <Music2 size={24} color="#00D9FF" />
-            <Globe size={24} color="#FF006E" />
-            <Globe size={24} color="#00D9FF" />
+            <Laptop size={24} color="var(--cyan)" />
+            <Tablet size={24} color="var(--teal)" />
           </div>,
     size: 'col-span-2',
-    msg: WHATSAPP_MSGS.BUY('Instagram Account', '10k Followers')
+    category: 'laptops'
   }
 ];
 
@@ -60,14 +59,15 @@ const BentoGrid = () => {
   };
 
   return (
-    <section className="container" style={{ padding: '4rem 0' }}>
+    <section className="container" style={{ padding: '5rem 0' }}>
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
         style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.2rem', fontWeight: 900 }}
       >
-        MOBILE <span className="gold-text">TRADING HUB</span>
+        BROWSE <span className="gold-text">CATEGORIES</span>
       </motion.h2>
       <motion.div 
         className="bento-grid"
@@ -77,13 +77,10 @@ const BentoGrid = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         {services.map((service, index) => (
-          <motion.a
+          <motion.div
             key={index}
-            href={generateWhatsAppLink(service.msg)}
-            target="_blank"
-            rel="noreferrer"
             variants={itemVariants}
-            whileHover={{ y: -8, boxShadow: '0 15px 40px rgba(255, 0, 110, 0.25), 0 0 30px rgba(0, 217, 255, 0.15)' }}
+            whileHover={{ y: -8, boxShadow: '0 15px 40px rgba(0, 212, 170, 0.2), 0 0 30px rgba(0, 217, 255, 0.1)' }}
             className="glass-card"
             style={{
               padding: '2rem',
@@ -104,17 +101,32 @@ const BentoGrid = () => {
               >
                 {service.icon}
               </motion.div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{service.title}</h3>
-              <p style={{ color: '#8892B0', fontSize: '0.9rem' }}>{service.desc}</p>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{service.title}</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>{service.desc}</p>
             </div>
-            <motion.div 
-              style={{ color: 'var(--pink)', fontWeight: '900', marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', textTransform: 'uppercase' }}
-              whileHover={{ gap: '0.75rem' }}
-              transition={{ duration: 0.3 }}
+            <Link 
+              to={`/shop?category=${service.category}`}
+              style={{ 
+                color: 'var(--teal)', 
+                fontWeight: '700', 
+                marginTop: '1.5rem', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '0.5rem', 
+                fontSize: '0.85rem', 
+                textTransform: 'uppercase',
+                textDecoration: 'none'
+              }}
             >
-              Get Rates <ArrowRight size={16} />
-            </motion.div>
-          </motion.a>
+              <motion.span
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                whileHover={{ gap: '0.75rem' }}
+                transition={{ duration: 0.3 }}
+              >
+                Shop Now <ArrowRight size={16} />
+              </motion.span>
+            </Link>
+          </motion.div>
         ))}
       </motion.div>
     </section>

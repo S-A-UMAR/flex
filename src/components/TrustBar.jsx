@@ -3,27 +3,44 @@ import { motion } from 'framer-motion';
 import { CheckCircle, ShieldCheck, Zap, Award, Users, Lock } from 'lucide-react';
 
 const badges = [
-  { icon: <CheckCircle size={18} />, text: 'Verified Dealer', color: '#FF006E' },
-  { icon: <ShieldCheck size={18} />, text: 'Secure Transactions', color: '#00D9FF' },
-  { icon: <Zap size={18} />, text: 'Instant Delivery', color: '#FF006E' },
-  { icon: <Award size={18} />, text: 'Top Rated 2024', color: '#00D9FF' },
-  { icon: <Users size={18} />, text: '10K+ Happy Customers', color: '#FF006E' },
-  { icon: <Lock size={18} />, text: '100% Trusted', color: '#00D9FF' },
+  { icon: <CheckCircle size={20} />, text: 'Verified Seller', color: 'var(--teal)' },
+  { icon: <ShieldCheck size={20} />, text: 'Secure Payments', color: 'var(--cyan)' },
+  { icon: <Zap size={20} />, text: 'Fast Delivery', color: 'var(--teal)' },
+  { icon: <Award size={20} />, text: 'Top Rated 2024', color: 'var(--cyan)' },
+  { icon: <Users size={20} />, text: '10K+ Customers', color: 'var(--teal)' },
+  { icon: <Lock size={20} />, text: '100% Authentic', color: 'var(--cyan)' },
 ];
 
 const TrustBar = () => {
   return (
-    <section style={{ padding: '3rem 0', background: 'rgba(255, 0, 110, 0.05)', borderTop: '1px solid rgba(0, 217, 255, 0.2)', borderBottom: '1px solid rgba(0, 217, 255, 0.2)' }}>
+    <section style={{ 
+      padding: '4rem 0', 
+      background: 'rgba(0, 212, 170, 0.03)', 
+      borderTop: '1px solid rgba(0, 212, 170, 0.1)', 
+      borderBottom: '1px solid rgba(0, 212, 170, 0.1)' 
+    }}>
       <div className="container">
-        <h3 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.3rem', fontWeight: '700' }}>
+        <motion.h3 
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{ 
+            textAlign: 'center', 
+            marginBottom: '2.5rem', 
+            fontSize: '1.4rem', 
+            fontWeight: '700',
+            letterSpacing: '2px'
+          }}
+        >
           WHY <span className="gold-text">CHOOSE FLEX</span>
-        </h3>
+        </motion.h3>
         
         <motion.div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-            gap: '1.5rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: '1.25rem'
           }}
         >
           {badges.map((badge, index) => (
@@ -33,10 +50,10 @@ const TrustBar = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -6, boxShadow: '0 15px 35px rgba(0, 212, 170, 0.15)' }}
               className="glass-card"
               style={{
-                padding: '1.5rem',
+                padding: '1.5rem 1rem',
                 textAlign: 'center',
                 cursor: 'pointer'
               }}
@@ -45,17 +62,22 @@ const TrustBar = () => {
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
-                  marginBottom: '1rem'
+                  marginBottom: '0.75rem'
                 }}
               >
                 <motion.div
-                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
                   style={{ color: badge.color }}
                 >
                   {badge.icon}
                 </motion.div>
               </div>
-              <p style={{ fontSize: '0.85rem', fontWeight: '700', color: '#E8F4F8' }}>
+              <p style={{ 
+                fontSize: '0.85rem', 
+                fontWeight: '700', 
+                color: 'var(--text-primary)',
+                letterSpacing: '0.5px'
+              }}>
                 {badge.text}
               </p>
             </motion.div>
