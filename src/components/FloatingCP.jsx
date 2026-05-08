@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Gem } from 'lucide-react';
+import { Zap, Sparkles, Circle } from 'lucide-react';
 
 const FloatingCP = () => {
   const [icons, setIcons] = useState([]);
@@ -7,11 +7,14 @@ const FloatingCP = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
+      const iconTypes = [Zap, Sparkles, Circle];
+      const IconComponent = iconTypes[Math.floor(Math.random() * iconTypes.length)];
       const newIcon = {
         id,
         left: Math.random() * 100 + '%',
-        size: Math.random() * 20 + 10 + 'px',
+        size: Math.random() * 16 + 8,
         duration: Math.random() * 10 + 5 + 's',
+        IconComponent
       };
       setIcons(prev => [...prev, newIcon]);
       
@@ -19,7 +22,7 @@ const FloatingCP = () => {
       setTimeout(() => {
         setIcons(prev => prev.filter(icon => icon.id !== id));
       }, 15000);
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -32,12 +35,11 @@ const FloatingCP = () => {
           className="floating-cp"
           style={{
             left: icon.left,
-            fontSize: icon.size,
             animationDuration: icon.duration,
             bottom: '-50px'
           }}
         >
-          <Gem size={parseInt(icon.size)} />
+          <icon.IconComponent size={icon.size} />
         </div>
       ))}
     </div>

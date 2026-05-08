@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap');
 
 :root {
-  --navy: #0D1B2A;
-  --navy-light: #1a2a3a;
-  --navy-lighter: #293548;
-  --blue: #0052CC;
-  --pink: #FF006E;
-  --pink-glow: rgba(255, 0, 110, 0.4);
+  --navy: #0A0F1A;
+  --navy-light: #121828;
+  --navy-lighter: #1E2738;
+  --blue: #0066FF;
+  --teal: #00D4AA;
+  --teal-light: #00F5C4;
+  --teal-glow: rgba(0, 212, 170, 0.4);
   --cyan: #00D9FF;
   --cyan-glow: rgba(0, 217, 255, 0.3);
+  --accent: #00D4AA;
+  --accent-glow: rgba(0, 212, 170, 0.4);
   --text-primary: #E8F4F8;
-  --text-secondary: #A8C5D1;
-  --glass-bg: rgba(13, 27, 42, 0.85);
-  --glass-border: rgba(0, 217, 255, 0.25);
-  --font-main: 'Outfit', sans-serif; /* Premium feel */
+  --text-secondary: #8B9CB3;
+  --glass-bg: rgba(10, 15, 26, 0.85);
+  --glass-border: rgba(0, 212, 170, 0.25);
+  --font-main: 'Outfit', sans-serif;
 }
 
 
@@ -57,8 +60,8 @@ h1, h2, h3 {
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, var(--pink) 0%, #FF1493 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--cyan) 100%);
+  color: #0A0F1A;
   padding: 1rem 2rem;
   border-radius: 12px;
   font-weight: 900;
@@ -71,7 +74,7 @@ h1, h2, h3 {
   gap: 0.5rem;
   text-transform: uppercase;
   font-size: 0.9rem;
-  box-shadow: 0 0 25px var(--pink-glow), inset 0 0 20px rgba(255, 217, 237, 0.2);
+  box-shadow: 0 0 25px var(--teal-glow), inset 0 0 20px rgba(0, 245, 196, 0.2);
 }
 
 /* Floating CP Icon Animation */
@@ -87,8 +90,8 @@ h1, h2, h3 {
   pointer-events: none;
   z-index: -1;
   animation: float-cp linear infinite;
-  color: var(--pink);
-  filter: drop-shadow(0 0 8px var(--pink-glow));
+  color: var(--teal);
+  filter: drop-shadow(0 0 8px var(--teal-glow));
 }
 
 /* Bento Grid Mobile */
@@ -112,15 +115,15 @@ h1, h2, h3 {
   background: var(--navy);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--pink), var(--cyan));
+  background: linear-gradient(180deg, var(--teal), var(--cyan));
   border-radius: 10px;
 }
 
 .gold-text {
-  background: linear-gradient(to right, #FF006E, #00D9FF);
+  background: linear-gradient(to right, var(--teal), var(--cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px rgba(255, 0, 110, 0.4));
+  filter: drop-shadow(0 0 8px rgba(0, 212, 170, 0.4));
 }
 
 /* Enhanced Animations */
@@ -159,10 +162,10 @@ h1, h2, h3 {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 0, 110, 0.3), 0 0 40px rgba(0, 217, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.3), 0 0 40px rgba(0, 217, 255, 0.15);
   }
   50% {
-    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), 0 0 50px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 212, 170, 0.6), 0 0 50px rgba(0, 217, 255, 0.3);
   }
 }
 
@@ -192,13 +195,13 @@ h1, h2, h3 {
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(255, 0, 110, 0.25), 0 0 30px rgba(0, 217, 255, 0.15);
+  box-shadow: 0 15px 40px rgba(0, 212, 170, 0.25), 0 0 30px rgba(0, 217, 255, 0.15);
 }
 
 /* Button Hover Effects */
 .btn-gold:hover {
   animation: scaleHover 0.3s ease forwards;
-  box-shadow: 0 0 35px var(--pink-glow), 0 0 20px rgba(0, 217, 255, 0.3), inset 0 0 30px rgba(255, 217, 237, 0.3);
+  box-shadow: 0 0 35px var(--teal-glow), 0 0 20px rgba(0, 217, 255, 0.3), inset 0 0 30px rgba(0, 245, 196, 0.3);
 }
 
 /* Rating Stars */
@@ -210,11 +213,11 @@ h1, h2, h3 {
 
 /* Price Badge */
 .price-badge {
-  background: linear-gradient(135deg, var(--pink), #FF1493);
+  background: linear-gradient(135deg, var(--teal), var(--cyan));
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 700;
-  color: #fff;
+  color: #0A0F1A;
 }
 
 /* Stock Status */
@@ -228,8 +231,8 @@ h1, h2, h3 {
 }
 
 .in-stock {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4CAF50;
+  background: rgba(0, 212, 170, 0.2);
+  color: #00D4AA;
 }
 
 .out-of-stock {
@@ -263,12 +266,95 @@ h1, h2, h3 {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(135deg, var(--pink), #FF1493);
-  color: #fff;
+  background: linear-gradient(135deg, var(--teal), var(--cyan));
+  color: #0A0F1A;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  box-shadow: 0 0 15px var(--pink-glow);
+  box-shadow: 0 0 15px var(--teal-glow);
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 170, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero-split {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Category Chips */
+.category-chip {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  color: #CCD6F6;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.category-chip.active {
+  background: linear-gradient(135deg, var(--teal), var(--cyan));
+  color: #0A0F1A;
+  border-color: var(--teal);
+}
+
+/* Product Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Social Icons */
+.social-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--teal);
+  color: #0A0F1A;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px var(--teal-glow);
 }

@@ -5,35 +5,27 @@ import { ChevronDown } from 'lucide-react';
 const faqData = [
   {
     question: 'How do I order on FLEX?',
-    answer: 'Simply browse our Shop or Market, add products to your cart, and click "Checkout via WhatsApp". We will confirm your order and process delivery immediately.'
+    answer: 'Simply browse our Shop, add products to your cart, and click "Checkout via WhatsApp". We will confirm your order and process delivery immediately.'
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all payment methods via WhatsApp. You can transfer bank, USSD, or use mobile payment apps. Payment confirmation is instant.'
+    answer: 'We accept bank transfers, mobile payment apps, and cash on delivery in select locations. Payment confirmation is instant.'
   },
   {
     question: 'How fast is delivery?',
-    answer: 'We offer same-day or next-day delivery depending on your location. Digital products are delivered instantly. For physical items, expect delivery within 24 hours in major cities.'
+    answer: 'We offer same-day or next-day delivery depending on your location. Most orders within major cities are delivered within 24 hours.'
+  },
+  {
+    question: 'Are all products authentic?',
+    answer: 'Yes! We only sell 100% authentic products. All items come with original packaging and warranty where applicable.'
   },
   {
     question: 'Can I return or exchange items?',
     answer: 'Yes! We have a 7-day return policy on all items. Simply contact us via WhatsApp with your order number and reason for return.'
   },
   {
-    question: 'Is FLEX secure and trustworthy?',
-    answer: 'Absolutely. We are a verified dealer with thousands of happy customers. All transactions are secure, and we guarantee 100% customer satisfaction.'
-  },
-  {
-    question: 'What if I have issues with my order?',
-    answer: 'Our support team is available 24/7 on WhatsApp. Contact us immediately with any issues, and we will resolve them quickly and professionally.'
-  },
-  {
-    question: 'Do you offer bulk orders?',
-    answer: 'Yes! For bulk purchases, contact us directly via WhatsApp for special pricing and arrangements.'
-  },
-  {
-    question: 'Can I track my order?',
-    answer: 'Yes, we provide order tracking via WhatsApp. You will receive updates on your order status from confirmation to delivery.'
+    question: 'Do you offer warranty on products?',
+    answer: 'Most electronics come with manufacturer warranty. We also provide our own 30-day quality guarantee on all products.'
   }
 ];
 
@@ -61,7 +53,7 @@ const FAQ = () => {
   };
 
   return (
-    <section style={{ padding: '4rem 0' }} className="container">
+    <section style={{ padding: '5rem 0' }} className="container">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +64,7 @@ const FAQ = () => {
         <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem', fontWeight: 900 }}>
           FREQUENTLY <span className="gold-text">ASKED QUESTIONS</span>
         </h2>
-        <p style={{ color: '#8892B0', fontSize: '1rem' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
           Everything you need to know about shopping with FLEX
         </p>
       </motion.div>
@@ -99,7 +91,7 @@ const FAQ = () => {
                 padding: '1.5rem',
                 background: 'transparent',
                 border: 'none',
-                color: '#CCD6F6',
+                color: 'var(--text-primary)',
                 textAlign: 'left',
                 cursor: 'pointer',
                 display: 'flex',
@@ -114,7 +106,7 @@ const FAQ = () => {
                 animate={{ rotate: openIndex === index ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <ChevronDown size={20} color="#D4AF37" />
+                <ChevronDown size={20} color="var(--teal)" />
               </motion.div>
             </motion.button>
 
@@ -126,14 +118,14 @@ const FAQ = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    borderTop: '1px solid rgba(212, 175, 55, 0.2)',
+                    borderTop: '1px solid rgba(0, 212, 170, 0.2)',
                     overflow: 'hidden'
                   }}
                 >
                   <p style={{
                     padding: '0 1.5rem 1.5rem',
-                    color: '#8892B0',
-                    lineHeight: '1.6',
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.7',
                     fontSize: '0.95rem'
                   }}>
                     {faq.answer}
@@ -154,16 +146,16 @@ const FAQ = () => {
         style={{
           textAlign: 'center',
           marginTop: '3rem',
-          padding: '2rem',
-          background: 'rgba(212, 175, 55, 0.1)',
-          borderRadius: '12px',
-          border: '1px solid rgba(212, 175, 55, 0.2)'
+          padding: '2.5rem',
+          background: 'rgba(0, 212, 170, 0.08)',
+          borderRadius: '16px',
+          border: '1px solid rgba(0, 212, 170, 0.2)'
         }}
       >
-        <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>
-          Can&apos;t find your answer?
+        <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>
+          Still have questions?
         </h3>
-        <p style={{ color: '#8892B0', marginBottom: '1.5rem' }}>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
           Contact our support team 24/7 on WhatsApp
         </p>
         <a href="https://wa.me/2347072692701" target="_blank" rel="noreferrer" className="btn-gold">

@@ -46,8 +46,8 @@ const Shop = () => {
           <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
             FLEX <span className="gold-text">SHOP</span>
           </h1>
-          <p style={{ color: '#8892B0', fontSize: '1.05rem' }}>
-            Discover our premium collection of products. Browse, add to cart, or purchase directly via WhatsApp.
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem' }}>
+            Discover our premium collection of tech products. Quality guaranteed.
           </p>
         </motion.div>
 
@@ -65,7 +65,7 @@ const Shop = () => {
             gap: '1rem'
           }}
         >
-          <Search size={20} color="#D4AF37" />
+          <Search size={20} color="var(--teal)" />
           <input
             type="text"
             placeholder="Search products..."
@@ -75,7 +75,7 @@ const Shop = () => {
               flex: 1,
               background: 'transparent',
               border: 'none',
-              color: '#CCD6F6',
+              color: 'var(--text-primary)',
               fontSize: '1rem',
               outline: 'none'
             }}
@@ -86,7 +86,7 @@ const Shop = () => {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#8892B0',
+                color: 'var(--text-secondary)',
                 cursor: 'pointer',
                 padding: '0.5rem'
               }}
@@ -121,13 +121,13 @@ const Shop = () => {
                 borderRadius: '8px',
                 background:
                   selectedCategory === cat.id
-                    ? 'linear-gradient(135deg, var(--gold), #B8860B)'
-                    : 'rgba(255,255,255,0.08)',
-                color: selectedCategory === cat.id ? 'var(--navy)' : '#CCD6F6',
-                border: `1px solid ${selectedCategory === cat.id ? 'var(--gold)' : 'rgba(255,255,255,0.1)'}`,
+                    ? 'linear-gradient(135deg, var(--teal), var(--cyan))'
+                    : 'rgba(255,255,255,0.05)',
+                color: selectedCategory === cat.id ? '#0A0F1A' : 'var(--text-primary)',
+                border: `1px solid ${selectedCategory === cat.id ? 'var(--teal)' : 'rgba(255,255,255,0.1)'}`,
                 fontWeight: '700',
                 cursor: 'pointer',
-                fontSize: '0.9rem',
+                fontSize: '0.85rem',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.3s ease'
               }}
@@ -145,7 +145,7 @@ const Shop = () => {
           transition={{ duration: 0.4 }}
           style={{
             marginBottom: '1.5rem',
-            color: '#8892B0',
+            color: 'var(--text-secondary)',
             fontSize: '0.9rem'
           }}
         >
@@ -153,7 +153,7 @@ const Shop = () => {
             <p>No products found. Try a different search or category.</p>
           ) : (
             <p>
-              Showing <span style={{ color: 'var(--gold)' }}>{filteredProducts.length}</span> product{filteredProducts.length !== 1 ? 's' : ''}
+              Showing <span style={{ color: 'var(--teal)', fontWeight: 700 }}>{filteredProducts.length}</span> product{filteredProducts.length !== 1 ? 's' : ''}
             </p>
           )}
         </motion.div>
@@ -166,7 +166,7 @@ const Shop = () => {
             transition={{ duration: 0.4 }}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
               gap: '1.5rem'
             }}
           >
@@ -185,7 +185,7 @@ const Shop = () => {
             style={{
               textAlign: 'center',
               padding: '4rem 2rem',
-              color: '#8892B0'
+              color: 'var(--text-secondary)'
             }}
           >
             <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>No products found</p>
