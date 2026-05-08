@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, ExternalLink, Flame, Trophy, Gem, Hash } from 'lucide-react';
+import { ShoppingCart, Gem, Star, TrendingUp, Zap, ChevronRight } from 'lucide-react';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
+import FloatingCP from '../components/FloatingCP';
+
+const cpItems = [
+  { id: 101, name: '80 CP', price: '₦1,200', discount: 'Instant', hot: false },
+  { id: 102, name: '420 CP', price: '₦4,500', discount: '-5%', hot: false },
+  { id: 103, name: '880 CP', price: '₦8,500', discount: '-10%', hot: true },
+  { id: 104, name: '2400 CP', price: '₦18,000', discount: 'Popular', hot: true },
+  { id: 105, name: '5000 CP', price: '₦35,000', discount: '-15%', hot: true },
+  { id: 106, name: '10800 CP', price: '₦65,000', discount: 'Best Value', hot: true },
+];
 
 const items = [
   // TECH
   { id: 1, name: 'iPhone 15 Pro Max', category: 'Tech', condition: 'New', price: '₦1,250,000', img: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1000&auto=format&fit=crop', badge: 'Popular' },
-  { id: 2, name: 'MacBook Pro M3 Max', category: 'Tech', condition: 'Factory Sealed', price: '₦3,850,000', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1000&auto=format&fit=crop', badge: 'Elite' },
+  { id: 2, name: 'MacBook Pro M3 Max', category: 'Tech', condition: 'Elite Spec', price: '₦3,850,000', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1000&auto=format&fit=crop', badge: 'Elite' },
   
   // GAMING ACCOUNTS
   { id: 3, name: 'CODM Mythic Account', category: 'Gaming', condition: 'Ghost Riley + 5 Mythics', price: '₦185,000', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop', badge: 'Hot' },
-  { id: 4, name: 'Call of Duty: Legendary Acc', category: 'Gaming', condition: 'Level 200 / Maxed', price: '₦75,000', img: 'https://images.unsplash.com/photo-1552824236-07764bdc2d29?q=80&w=1000&auto=format&fit=crop' },
+  { id: 4, name: 'YouTube Monetized (10k)', category: 'Socials', condition: 'Active / USA', price: '₦125,000', img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop', badge: 'Featured' },
   
-  // CURRENCY
-  { id: 5, name: 'CODM 10,000 CP Bundle', category: 'Currency', condition: 'Instant Load', price: '₦42,000', img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop', icon: <Gem size={24} /> },
-  
-  // SOCIALS
-  { id: 6, name: 'Verified Instagram (Blue Tick)', category: 'Socials', condition: '50k+ Followers', price: '₦450,000', img: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?q=80&w=1000&auto=format&fit=crop', badge: 'Premium' },
-  { id: 7, name: 'Monetized YouTube Channel', category: 'Socials', condition: '10k Subs / Active', price: '₦120,000', img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop' },
-  { id: 8, name: 'Aged TikTok Account', category: 'Socials', condition: 'US/UK Region', price: '₦25,000', img: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=1000&auto=format&fit=crop' },
+  // SOCIALS (Only TikTok, Facebook, Instagram)
+  { id: 5, name: 'Instagram Verified', category: 'Socials', condition: '50k Followers', price: '₦450,000', img: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?q=80&w=1000&auto=format&fit=crop' },
+  { id: 6, name: 'Aged TikTok (10k)', category: 'Socials', condition: 'US Organic', price: '₦35,000', img: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=1000&auto=format&fit=crop' },
+  { id: 7, name: 'Facebook Business Page', category: 'Socials', condition: 'Ads Approved', price: '₦45,000', img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1000&auto=format&fit=crop' },
 ];
 
 const Market = () => {
@@ -31,32 +38,71 @@ const Market = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="container"
-      style={{ paddingTop: '120px', paddingBottom: '100px' }}
+      style={{ paddingTop: '100px', paddingBottom: '100px' }}
     >
-      <header style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 900, marginBottom: '1rem' }}>ELITE <span className="gold-text">MARKET</span></h1>
-        <p style={{ color: '#8892B0' }}>Premium digital inventory curated for the elite.</p>
+      <FloatingCP />
+      
+      {/* Mobile-First Header */}
+      <header style={{ marginBottom: '3rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+          <TrendingUp size={16} className="gold-text" />
+          <span style={{ fontSize: '0.7rem', fontWeight: '900', color: '#8892B0' }}>ELITE TRADING PLATFORM</span>
+        </div>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>FLEX <span className="gold-text">MARKET</span></h1>
         
+        {/* CP FLASH SECTION */}
+        <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '3rem', border: '1px solid var(--gold)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            <Zap size={20} color="#D4AF37" fill="#D4AF37" />
+            <h2 style={{ fontSize: '1.2rem', letterSpacing: '1px' }}>CODM CP <span className="gold-text">INSTANT LOAD</span></h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+            {cpItems.map(cp => (
+              <motion.div
+                key={cp.id}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.open(generateWhatsAppLink(WHATSAPP_MSGS.CURRENCY('CODM CP', cp.name)), '_blank')}
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  padding: '1rem',
+                  borderRadius: '12px',
+                  textAlign: 'center',
+                  position: 'relative',
+                  cursor: 'pointer'
+                }}
+              >
+                {cp.hot && <Star size={12} style={{ position: 'absolute', top: 8, right: 8, color: 'var(--gold)' }} />}
+                <Gem size={24} color="#D4AF37" style={{ marginBottom: '0.5rem' }} />
+                <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{cp.name}</div>
+                <div className="gold-text" style={{ fontSize: '0.9rem', fontWeight: '900' }}>{cp.price}</div>
+                <div style={{ fontSize: '0.6rem', color: '#8892B0', marginTop: '0.3rem' }}>{cp.discount}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Filter Scroll */}
         <div style={{ 
           display: 'flex', 
-          justifyContent: 'center', 
-          gap: '1rem', 
-          marginTop: '3rem',
-          flexWrap: 'wrap'
+          gap: '0.8rem', 
+          overflowX: 'auto', 
+          paddingBottom: '1rem',
+          scrollbarWidth: 'none'
         }}>
-          {['All', 'Tech', 'Gaming', 'Currency', 'Socials'].map(cat => (
+          {['All', 'Tech', 'Gaming', 'Socials'].map(cat => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
               style={{
-                padding: '0.6rem 2rem',
-                borderRadius: '4px',
+                padding: '0.6rem 1.5rem',
+                borderRadius: '8px',
                 background: filter === cat ? 'var(--gold)' : 'rgba(255,255,255,0.05)',
                 color: filter === cat ? 'var(--navy)' : '#FFF',
-                border: filter === cat ? '1px solid var(--gold)' : '1px solid rgba(255,255,255,0.1)',
-                cursor: 'pointer',
+                border: 'none',
+                whiteSpace: 'nowrap',
                 fontWeight: 'bold',
-                transition: 'all 0.3s'
+                fontSize: '0.85rem'
               }}
             >
               {cat}
@@ -65,74 +111,44 @@ const Market = () => {
         </div>
       </header>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
-        gap: '2.5rem' 
-      }}>
+      {/* Main Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
         <AnimatePresence mode="popLayout">
           {filteredItems.map(item => (
             <motion.div
               layout
               key={item.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="glass-card"
-              style={{ overflow: 'hidden' }}
+              style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
             >
-              <div style={{ position: 'relative', height: '240px' }}>
+              <div style={{ height: '200px', position: 'relative' }}>
                 <img src={item.img} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                {item.badge && (
-                  <div style={{ 
-                    position: 'absolute', 
-                    top: '15px', 
-                    left: '15px', 
-                    background: 'var(--gold)', 
-                    color: 'var(--navy)', 
-                    padding: '2px 10px', 
-                    fontSize: '0.7rem', 
-                    fontWeight: '900',
-                    borderRadius: '4px'
-                  }}>
-                    {item.badge.toUpperCase()}
-                  </div>
-                )}
-                <div style={{ 
-                  position: 'absolute', 
-                  bottom: '0', 
-                  width: '100%', 
-                  padding: '2rem 1.5rem 1rem',
-                  background: 'linear-gradient(transparent, var(--navy))'
-                }}>
-                  <span style={{ color: 'var(--gold)', fontSize: '0.8rem', fontWeight: 'bold' }}>{item.category.toUpperCase()}</span>
+                <div style={{ position: 'absolute', top: 15, right: 15 }}>
+                   <div style={{ background: 'var(--navy)', padding: '4px 12px', borderRadius: '100px', fontSize: '0.7rem', fontWeight: 'bold', border: '1px solid var(--gold)' }}>
+                      {item.category.toUpperCase()}
+                   </div>
                 </div>
               </div>
-
               <div style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>{item.name}</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.1rem', marginBottom: '0.3rem' }}>{item.name}</h3>
+                    <p style={{ color: '#8892B0', fontSize: '0.8rem' }}>{item.condition}</p>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div className="gold-text" style={{ fontSize: '1.3rem', fontWeight: '900' }}>{item.price}</div>
+                  </div>
                 </div>
-                <p style={{ color: '#8892B0', fontSize: '0.9rem', marginBottom: '1.5rem', minHeight: '3rem' }}>{item.condition}</p>
-                
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '1.4rem', fontWeight: '900' }}>{item.price}</span>
-                  <a
-                    href={generateWhatsAppLink(WHATSAPP_MSGS.BUY(item.name, item.condition))}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-gold"
-                    style={{ 
-                      padding: '0.6rem 1.2rem', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '0.5rem',
-                      borderRadius: '4px'
-                    }}
-                  >
-                    <ShoppingCart size={18} /> Buy
-                  </a>
-                </div>
+                <a
+                  href={generateWhatsAppLink(WHATSAPP_MSGS.BUY(item.name, item.condition))}
+                  target="_blank"
+                  className="btn-gold"
+                  style={{ width: '100%' }}
+                >
+                  <ShoppingCart size={18} /> Purchase via WhatsApp
+                </a>
               </div>
             </motion.div>
           ))}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Repeat, ArrowRightLeft } from 'lucide-react';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
+import FloatingCP from '../components/FloatingCP';
 
 const Swap = () => {
   const [have, setHave] = useState('');
@@ -12,8 +13,9 @@ const Swap = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="container"
-      style={{ paddingTop: '120px', minHeight: '100vh' }}
+      style={{ paddingTop: '120px', minHeight: '100vh', position: 'relative' }}
     >
+      <FloatingCP />
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Swap & <span className="gold-text">Trade Portal</span></h1>
         <p style={{ color: '#8892B0' }}>Exchange your old tech or accounts for something better instantly.</p>

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ShieldCheck, UserCheck, Globe, Youtube, Instagram, Music2 } from 'lucide-react';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
+import FloatingCP from '../components/FloatingCP';
 
 const steps = [
   {
@@ -32,8 +33,9 @@ const Verify = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="container"
-      style={{ paddingTop: '120px', paddingBottom: '80px' }}
+      style={{ paddingTop: '120px', paddingBottom: '80px', position: 'relative' }}
     >
+      <FloatingCP />
       <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
         <h1 style={{ fontSize: '3.5rem', fontWeight: 900, marginBottom: '1rem' }}>GET <span className="gold-text">VERIFIED</span></h1>
         <p style={{ color: '#8892B0', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
@@ -78,10 +80,9 @@ const Verify = () => {
         <h2 style={{ marginBottom: '2.5rem', fontSize: '2rem', fontWeight: '900' }}>START YOUR VERIFICATION</h2>
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           {[
-            { name: 'Instagram', icon: <Instagram size={18} /> },
-            { name: 'YouTube', icon: <Youtube size={18} /> },
             { name: 'TikTok', icon: <Music2 size={18} /> },
-            { name: 'Facebook', icon: <Globe size={18} /> }
+            { name: 'Facebook', icon: <Globe size={18} /> },
+            { name: 'Instagram', icon: <Instagram size={18} /> }
           ].map(platform => (
             <a
               key={platform.name}
