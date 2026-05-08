@@ -1,230 +1,191 @@
 export const products = [
+  // CP Bundles
   {
     id: 1,
-    name: 'Premium Airforce Sneakers',
-    price: 15000,
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop',
-    category: 'shoes',
-    rating: 4.8,
-    reviews: 124,
+    name: '1000 CP Bundle',
+    price: 2500,
+    image: '/images/cp-1000.jpg',
+    category: 'cp',
+    rating: 4.9,
+    reviews: 542,
     inStock: true,
-    description: 'Classic premium sneakers with superior comfort and durability.'
+    description: 'Get 1000 COD Points instantly. Perfect starter bundle for weapons and operators.'
   },
   {
     id: 2,
-    name: 'Designer Handbag',
-    price: 45000,
-    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=500&fit=crop',
-    category: 'accessories',
-    rating: 4.7,
-    reviews: 89,
+    name: '5000 CP Ultimate Bundle',
+    price: 11000,
+    image: '/images/cp-5000.jpg',
+    category: 'cp',
+    rating: 4.8,
+    reviews: 389,
     inStock: true,
-    description: 'Elegant leather handbag, perfect for any occasion.'
+    description: 'Premium 5000 CP bundle. Unlock premium content, operators, and bundles.'
   },
   {
     id: 3,
-    name: 'Wireless Headphones',
-    price: 8500,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
-    category: 'electronics',
-    rating: 4.6,
-    reviews: 156,
+    name: 'Elite Gaming Account',
+    price: 35000,
+    image: '/images/gaming-account.jpg',
+    category: 'accounts',
+    rating: 4.7,
+    reviews: 267,
     inStock: true,
-    description: 'High-quality sound with active noise cancellation.'
+    description: 'Fully verified COD account with premium operators and weapon blueprints unlocked.'
   },
+  
+  // Social Media Accounts
   {
     id: 4,
-    name: 'Smart Watch',
-    price: 12000,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop',
-    category: 'electronics',
-    rating: 4.5,
-    reviews: 92,
+    name: 'Aged TikTok Account',
+    price: 18000,
+    image: '/images/tiktok-account.jpg',
+    category: 'social',
+    rating: 4.8,
+    reviews: 198,
     inStock: true,
-    description: 'Advanced fitness tracking and notifications.'
+    description: 'Verified aged TikTok account, clean history, ready for monetization.'
   },
   {
     id: 5,
-    name: 'Casual T-Shirt Pack',
-    price: 3500,
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop',
-    category: 'clothing',
-    rating: 4.4,
-    reviews: 201,
-    inStock: true,
-    description: 'Pack of 3 premium quality t-shirts, multiple colors.'
-  },
-  {
-    id: 6,
-    name: 'Running Shoes',
-    price: 12000,
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop',
-    category: 'shoes',
-    rating: 4.7,
-    reviews: 145,
-    inStock: true,
-    description: 'Lightweight and comfortable for daily running.'
-  },
-  {
-    id: 7,
-    name: 'Blue Denim Jeans',
-    price: 7500,
-    image: 'https://images.unsplash.com/photo-1542272604-787c62d465d1?w=500&h=500&fit=crop',
-    category: 'clothing',
-    rating: 4.6,
-    reviews: 178,
-    inStock: true,
-    description: 'Classic fit denim jeans, comfortable and stylish.'
-  },
-  {
-    id: 8,
-    name: 'Leather Belt',
-    price: 2500,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop',
-    category: 'accessories',
-    rating: 4.5,
-    reviews: 67,
-    inStock: true,
-    description: 'Genuine leather belt with premium buckle.'
-  },
-  {
-    id: 9,
-    name: 'Sunglasses',
-    price: 5000,
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop',
-    category: 'accessories',
-    rating: 4.6,
-    reviews: 110,
-    inStock: true,
-    description: 'UV protection sunglasses with stylish design.'
-  },
-  {
-    id: 10,
-    name: 'Portable Charger',
-    price: 4000,
-    image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=500&h=500&fit=crop',
-    category: 'electronics',
-    rating: 4.7,
-    reviews: 203,
-    inStock: true,
-    description: '20000mAh fast charging portable power bank.'
-  },
-  {
-    id: 11,
-    name: 'Winter Jacket',
-    price: 18000,
-    image: 'https://images.unsplash.com/photo-1539533057440-7b8d0b5c8b9d?w=500&h=500&fit=crop',
-    category: 'clothing',
-    rating: 4.8,
-    reviews: 134,
-    inStock: true,
-    description: 'Warm and stylish winter jacket with premium insulation.'
-  },
-  {
-    id: 12,
-    name: 'Casual Loafers',
-    price: 9500,
-    image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&h=500&fit=crop',
-    category: 'shoes',
-    rating: 4.6,
-    reviews: 88,
-    inStock: true,
-    description: 'Comfortable slip-on loafers for everyday wear.'
-  },
-  {
-    id: 13,
-    name: 'Laptop Backpack',
-    price: 6500,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop',
-    category: 'accessories',
-    rating: 4.7,
-    reviews: 145,
-    inStock: true,
-    description: 'Durable backpack with laptop compartment and USB charging.'
-  },
-  {
-    id: 14,
-    name: 'Smartwatch Band',
-    price: 1500,
-    image: 'https://images.unsplash.com/photo-1587836212624-92f0d3c7c6da?w=500&h=500&fit=crop',
-    category: 'electronics',
-    rating: 4.5,
-    reviews: 92,
-    inStock: false,
-    description: 'Replacement bands for smartwatch, multiple colors.'
-  },
-  {
-    id: 15,
-    name: 'Formal Shirt',
-    price: 4500,
-    image: 'https://images.unsplash.com/photo-1598033129519-e58f75679a8b?w=500&h=500&fit=crop',
-    category: 'clothing',
-    rating: 4.6,
-    reviews: 75,
-    inStock: true,
-    description: 'Premium formal shirt, perfect for work or events.'
-  },
-  {
-    id: 16,
-    name: 'Fashion Sneakers',
-    price: 6000,
-    image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&h=500&fit=crop',
-    category: 'shoes',
+    name: 'Instagram Account (50K)',
+    price: 42000,
+    image: '/images/instagram-account.jpg',
+    category: 'social',
     rating: 4.7,
     reviews: 156,
     inStock: true,
-    description: 'Trendy casual sneakers with comfortable padding.'
+    description: 'High-follower Instagram account with engaged audience, perfect for influencing.'
   },
   {
-    id: 17,
-    name: 'Wool Scarf',
-    price: 2000,
-    image: 'https://images.unsplash.com/photo-1615732378892-87dcf91c7f8d?w=500&h=500&fit=crop',
-    category: 'accessories',
-    rating: 4.4,
-    reviews: 54,
+    id: 6,
+    name: 'Facebook Account (100K)',
+    price: 28000,
+    image: '/images/facebook-account.jpg',
+    category: 'social',
+    rating: 4.6,
+    reviews: 134,
     inStock: true,
-    description: 'Warm wool scarf, available in multiple colors.'
+    description: 'Aged Facebook account with 100K followers and established credibility.'
   },
+
+  // Tech & Gadgets
   {
-    id: 18,
-    name: 'Tablet Stand',
-    price: 2800,
-    image: 'https://images.unsplash.com/photo-1594437097048-06b0f00b0db0?w=500&h=500&fit=crop',
+    id: 7,
+    name: 'Premium Tech Device',
+    price: 54000,
+    image: '/images/tech-device.jpg',
     category: 'electronics',
-    rating: 4.5,
-    reviews: 78,
+    rating: 4.9,
+    reviews: 289,
     inStock: true,
-    description: 'Adjustable stand for tablets and small devices.'
+    description: 'Latest flagship technology device with premium features and performance.'
   },
   {
-    id: 19,
-    name: 'Sports Shorts',
-    price: 3000,
-    image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=500&fit=crop',
+    id: 8,
+    name: 'Gaming Accessories Bundle',
+    price: 12500,
+    image: '/images/accessory.jpg',
+    category: 'accessories',
+    rating: 4.7,
+    reviews: 176,
+    inStock: true,
+    description: 'Professional gaming peripherals bundle. Controller, headset, and mousepad.'
+  },
+
+  // Additional Items
+  {
+    id: 9,
+    name: 'Premium Gaming Hoodie',
+    price: 8500,
+    image: '/images/clothing.jpg',
     category: 'clothing',
     rating: 4.6,
-    reviews: 102,
+    reviews: 223,
     inStock: true,
-    description: 'Lightweight athletic shorts with moisture-wicking fabric.'
+    description: 'High-quality gaming hoodie with embroidered graphics and comfortable fit.'
   },
   {
-    id: 20,
-    name: 'Premium Shoes Collection',
-    price: 22000,
-    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500&h=500&fit=crop',
+    id: 10,
+    name: 'Limited Edition Boots',
+    price: 15000,
+    image: '/images/boots.jpg',
     category: 'shoes',
-    rating: 4.9,
-    reviews: 201,
+    rating: 4.8,
+    reviews: 145,
     inStock: true,
-    description: 'Exclusive limited edition premium shoe collection.'
+    description: 'Premium tactical boots with superior comfort and durability for all-day wear.'
+  },
+
+  // CP Tier 2
+  {
+    id: 11,
+    name: '2000 CP Value Pack',
+    price: 5000,
+    image: '/images/cp-5000.jpg',
+    category: 'cp',
+    rating: 4.9,
+    reviews: 421,
+    inStock: true,
+    description: 'Great value 2000 CP bundle. More content for less cost.'
+  },
+  {
+    id: 12,
+    name: '10000 CP Mega Bundle',
+    price: 21000,
+    image: '/images/cp-1000.jpg',
+    category: 'cp',
+    rating: 4.9,
+    reviews: 387,
+    inStock: true,
+    description: 'Maximum value bundle with 10000 CP. Unlock everything in the game.'
+  },
+
+  // Social Tier 2
+  {
+    id: 13,
+    name: 'YouTube Channel (500K)',
+    price: 85000,
+    image: '/images/tiktok-account.jpg',
+    category: 'social',
+    rating: 4.8,
+    reviews: 112,
+    inStock: true,
+    description: 'Established YouTube channel with 500K subscribers and monetization enabled.'
+  },
+  {
+    id: 14,
+    name: 'TikTok Creator Account',
+    price: 32000,
+    image: '/images/instagram-account.jpg',
+    category: 'social',
+    rating: 4.7,
+    reviews: 89,
+    inStock: true,
+    description: 'Creator-verified TikTok account with high engagement rate and growth potential.'
+  },
+
+  // Accounts Tier 2
+  {
+    id: 15,
+    name: 'Legendary Warzone Account',
+    price: 45000,
+    image: '/images/gaming-account.jpg',
+    category: 'accounts',
+    rating: 4.8,
+    reviews: 156,
+    inStock: true,
+    description: 'Fully maxed Warzone account with rare skins and completed battle pass collections.'
   }
 ];
 
 export const categories = [
-  { id: 'all', name: 'All Products', icon: '🏪' },
-  { id: 'shoes', name: 'Shoes', icon: '👟' },
-  { id: 'clothing', name: 'Clothing', icon: '👕' },
-  { id: 'accessories', name: 'Accessories', icon: '👜' },
-  { id: 'electronics', name: 'Electronics', icon: '📱' }
+  { id: 'all', name: 'All Products' },
+  { id: 'cp', name: 'CP Bundles' },
+  { id: 'accounts', name: 'Gaming Accounts' },
+  { id: 'social', name: 'Social Media' },
+  { id: 'electronics', name: 'Electronics' },
+  { id: 'clothing', name: 'Clothing' },
+  { id: 'shoes', name: 'Shoes' },
+  { id: 'accessories', name: 'Accessories' }
 ];

@@ -7,21 +7,21 @@ const services = [
   {
     title: 'CODM CP Load',
     desc: 'Instant COD Points loading. 80 CP to 10,800 CP available now.',
-    icon: <Gamepad2 size={32} color="#D4AF37" />,
+    icon: <Gamepad2 size={32} color="#FF006E" />,
     size: 'col-span-2',
     msg: WHATSAPP_MSGS.CURRENCY('CODM CP', '10800')
   },
   {
     title: 'Elite Accounts',
     desc: 'Verified CODM Mythic & Legendary accounts for pro players.',
-    icon: <Gamepad2 size={32} color="#0052CC" />,
+    icon: <Gamepad2 size={32} color="#00D9FF" />,
     size: 'col-span-1',
     msg: WHATSAPP_MSGS.BUY('CODM Mythic Account', 'Elite')
   },
   {
     title: 'Tech Swap',
     desc: 'Trade your iPhone or Laptop for the latest models instantly.',
-    icon: <Smartphone size={32} color="#D4AF37" />,
+    icon: <Smartphone size={32} color="#FF006E" />,
     size: 'col-span-1',
     msg: WHATSAPP_MSGS.SWAP('iPhone 13', 'iPhone 15 Pro')
   },
@@ -29,9 +29,9 @@ const services = [
     title: 'Social Assets',
     desc: 'Buy/Sell aged TikTok, Instagram, and Facebook accounts.',
     icon: <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <Music2 size={24} color="#00F2EA" />
-            <Globe size={24} color="#1877F2" />
-            <Globe size={24} color="#E4405F" />
+            <Music2 size={24} color="#00D9FF" />
+            <Globe size={24} color="#FF006E" />
+            <Globe size={24} color="#00D9FF" />
           </div>,
     size: 'col-span-2',
     msg: WHATSAPP_MSGS.BUY('Instagram Account', '10k Followers')
@@ -83,7 +83,7 @@ const BentoGrid = () => {
             target="_blank"
             rel="noreferrer"
             variants={itemVariants}
-            whileHover={{ y: -8, boxShadow: '0 15px 40px rgba(212, 175, 55, 0.2)' }}
+            whileHover={{ y: -8, boxShadow: '0 15px 40px rgba(255, 0, 110, 0.25), 0 0 30px rgba(0, 217, 255, 0.15)' }}
             className="glass-card"
             style={{
               padding: '2rem',
@@ -108,7 +108,7 @@ const BentoGrid = () => {
               <p style={{ color: '#8892B0', fontSize: '0.9rem' }}>{service.desc}</p>
             </div>
             <motion.div 
-              style={{ color: '#D4AF37', fontWeight: '900', marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', textTransform: 'uppercase' }}
+              style={{ color: 'var(--pink)', fontWeight: '900', marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', textTransform: 'uppercase' }}
               whileHover={{ gap: '0.75rem' }}
               transition={{ duration: 0.3 }}
             >

@@ -54,14 +54,14 @@ const Hero = () => {
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '0.5rem', 
-                background: 'rgba(212, 175, 55, 0.1)', 
+                background: 'rgba(255, 0, 110, 0.1)', 
                 padding: '6px 16px', 
                 borderRadius: '100px', 
                 marginBottom: '1.5rem', 
-                border: '1px solid var(--gold)' 
+                border: '1px solid var(--pink)' 
               }}
             >
-              <Sparkles size={14} className="gold-text" />
+              <Sparkles size={14} style={{ color: 'var(--pink)' }} />
               <span style={{ fontSize: '0.75rem', fontWeight: '900', letterSpacing: '2px' }}>MOBILE ELITE TRADING</span>
             </motion.div>
             

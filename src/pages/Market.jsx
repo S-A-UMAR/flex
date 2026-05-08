@@ -1,149 +1,353 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Gem, Star, TrendingUp, Zap, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Flame, Star, Search, Filter } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
+import { products, categories } from '../data/products';
 import FloatingCP from '../components/FloatingCP';
 
-const cpItems = [
-  { id: 101, name: '80 CP', price: '₦1,200', discount: 'Instant', hot: false },
-  { id: 102, name: '420 CP', price: '₦4,500', discount: '-5%', hot: false },
-  { id: 103, name: '880 CP', price: '₦8,500', discount: '-10%', hot: true },
-  { id: 104, name: '2400 CP', price: '₦18,000', discount: 'Popular', hot: true },
-  { id: 105, name: '5000 CP', price: '₦35,000', discount: '-15%', hot: true },
-  { id: 106, name: '10800 CP', price: '₦65,000', discount: 'Best Value', hot: true },
-];
-
-const items = [
-  // TECH
-  { id: 1, name: 'iPhone 15 Pro Max', category: 'Tech', condition: 'New', price: '₦1,250,000', img: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1000&auto=format&fit=crop', badge: 'Popular' },
-  { id: 2, name: 'MacBook Pro M3 Max', category: 'Tech', condition: 'Elite Spec', price: '₦3,850,000', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1000&auto=format&fit=crop', badge: 'Elite' },
-  
-  // GAMING ACCOUNTS
-  { id: 3, name: 'CODM Mythic Account', category: 'Gaming', condition: 'Ghost Riley + 5 Mythics', price: '₦185,000', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop', badge: 'Hot' },
-  { id: 4, name: 'YouTube Monetized (10k)', category: 'Socials', condition: 'Active / USA', price: '₦125,000', img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop', badge: 'Featured' },
-  
-  // SOCIALS (Only TikTok, Facebook, Instagram)
-  { id: 5, name: 'Instagram Verified', category: 'Socials', condition: '50k Followers', price: '₦450,000', img: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?q=80&w=1000&auto=format&fit=crop' },
-  { id: 6, name: 'Aged TikTok (10k)', category: 'Socials', condition: 'US Organic', price: '₦35,000', img: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=1000&auto=format&fit=crop' },
-  { id: 7, name: 'Facebook Business Page', category: 'Socials', condition: 'Ads Approved', price: '₦45,000', img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1000&auto=format&fit=crop' },
-];
-
 const Market = () => {
-  const [filter, setFilter] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredItems = filter === 'All' ? items : items.filter(item => item.category === filter);
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+  };
 
   return (
-    <div 
-      className="container"
-      style={{ paddingTop: '100px', paddingBottom: '100px' }}
-    >
+    <div style={{ paddingTop: '100px', paddingBottom: '60px' }}>
       <FloatingCP />
       
-      {/* Mobile-First Header */}
-      <header style={{ marginBottom: '3rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-          <TrendingUp size={16} className="gold-text" />
-          <span style={{ fontSize: '0.7rem', fontWeight: '900', color: '#8892B0' }}>ELITE TRADING PLATFORM</span>
-        </div>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>FLEX <span className="gold-text">MARKET</span></h1>
-        
-        {/* CP FLASH SECTION */}
-        <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '3rem', border: '1px solid var(--gold)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
-            <Zap size={20} color="#D4AF37" fill="#D4AF37" />
-            <h2 style={{ fontSize: '1.2rem', letterSpacing: '1px' }}>CODM CP <span className="gold-text">INSTANT LOAD</span></h2>
+      <div className="container">
+        {/* Header Section */}
+        <motion.section
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ marginBottom: '3rem' }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+            <Flame size={18} style={{ color: 'var(--pink)' }} />
+            <span style={{ fontSize: '0.75rem', fontWeight: '900', color: '#A8C5D1', letterSpacing: '2px' }}>
+              PREMIUM MARKETPLACE
+            </span>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
-            {cpItems.map(cp => (
-              <div
-                key={cp.id}
-                onClick={() => window.open(generateWhatsAppLink(WHATSAPP_MSGS.CURRENCY('CODM CP', cp.name)), '_blank')}
+
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 8vw, 3.5rem)',
+            lineHeight: 1.1,
+            marginBottom: '1rem',
+            fontWeight: 900
+          }}>
+            FLEX <span className="gold-text">MARKET</span>
+          </h1>
+
+          <p style={{
+            fontSize: '1.05rem',
+            color: '#A8C5D1',
+            maxWidth: '600px',
+            marginBottom: '2.5rem'
+          }}>
+            Instant CP bundles, verified gaming accounts, and premium social media assets. All transactions secured via WhatsApp.
+          </p>
+
+          {/* Search Bar */}
+          <div style={{ position: 'relative', marginBottom: '2rem' }}>
+            <Search size={18} style={{
+              position: 'absolute',
+              left: '1.5rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: 'var(--cyan)',
+              pointerEvents: 'none'
+            }} />
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '1rem 1rem 1rem 3.5rem',
+                background: 'rgba(0, 217, 255, 0.08)',
+                border: '1px solid var(--cyan)',
+                borderRadius: '12px',
+                color: 'var(--text-primary)',
+                fontSize: '1rem',
+                fontFamily: 'var(--font-main)',
+                outline: 'none',
+                transition: 'all 0.3s'
+              }}
+              onFocus={(e) => {
+                e.target.style.background = 'rgba(0, 217, 255, 0.12)';
+                e.target.style.boxShadow = '0 0 20px rgba(0, 217, 255, 0.2)';
+              }}
+              onBlur={(e) => {
+                e.target.style.background = 'rgba(0, 217, 255, 0.08)';
+                e.target.style.boxShadow = 'none';
+              }}
+            />
+          </div>
+
+          {/* Category Filter */}
+          <div style={{
+            display: 'flex',
+            gap: '1rem',
+            overflowX: 'auto',
+            paddingBottom: '0.5rem',
+            scrollbarWidth: 'none'
+          }}>
+            {categories.map(cat => (
+              <motion.button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  padding: '1rem',
-                  borderRadius: '12px',
-                  textAlign: 'center',
-                  position: 'relative',
-                  cursor: 'pointer'
+                  padding: '0.7rem 1.8rem',
+                  borderRadius: '10px',
+                  border: 'none',
+                  background: selectedCategory === cat.id
+                    ? 'linear-gradient(135deg, var(--pink), #FF1493)'
+                    : 'rgba(0, 217, 255, 0.1)',
+                  color: selectedCategory === cat.id ? '#fff' : 'var(--text-primary)',
+                  fontWeight: 900,
+                  fontSize: '0.85rem',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  transition: 'all 0.3s',
+                  boxShadow: selectedCategory === cat.id ? '0 0 25px var(--pink-glow)' : 'none'
                 }}
               >
-                {cp.hot && <Star size={12} style={{ position: 'absolute', top: 8, right: 8, color: 'var(--gold)' }} />}
-                <Gem size={24} color="#D4AF37" style={{ marginBottom: '0.5rem' }} />
-                <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{cp.name}</div>
-                <div className="gold-text" style={{ fontSize: '0.9rem', fontWeight: '900' }}>{cp.price}</div>
-                <div style={{ fontSize: '0.6rem', color: '#8892B0', marginTop: '0.3rem' }}>{cp.discount}</div>
-              </div>
+                {cat.name}
+              </motion.button>
             ))}
           </div>
-        </div>
+        </motion.section>
 
-        {/* Filter Scroll */}
-        <div style={{ 
-          display: 'flex', 
-          gap: '0.8rem', 
-          overflowX: 'auto', 
-          paddingBottom: '1rem',
-          scrollbarWidth: 'none'
-        }}>
-          {['All', 'Tech', 'Gaming', 'Socials'].map(cat => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
+        {/* Products Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: '1.5rem'
+          }}
+        >
+          {filteredProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="glass-card"
               style={{
-                padding: '0.6rem 1.5rem',
-                borderRadius: '8px',
-                background: filter === cat ? 'var(--gold)' : 'rgba(255,255,255,0.05)',
-                color: filter === cat ? 'var(--navy)' : '#FFF',
-                border: 'none',
-                whiteSpace: 'nowrap',
-                fontWeight: 'bold',
-                fontSize: '0.85rem'
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                cursor: 'pointer',
+                position: 'relative'
               }}
             >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </header>
+              {/* Product Image */}
+              <div style={{ position: 'relative', overflow: 'hidden', height: '200px' }}>
+                <motion.img
+                  src={product.image}
+                  alt={product.name}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
 
-      {/* Main Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-          {filteredItems.map(item => (
-            <div
-              key={item.id}
-              className="glass-card"
-              style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
-            >
-              <div style={{ height: '200px', position: 'relative' }}>
-                <img src={item.img} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', top: 15, right: 15 }}>
-                   <div style={{ background: 'var(--navy)', padding: '4px 12px', borderRadius: '100px', fontSize: '0.7rem', fontWeight: 'bold', border: '1px solid var(--gold)' }}>
-                      {item.category.toUpperCase()}
-                   </div>
+                {/* Category Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  left: '1rem',
+                  background: 'linear-gradient(135deg, var(--pink), #FF1493)',
+                  color: '#fff',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.7rem',
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  boxShadow: '0 0 15px var(--pink-glow)'
+                }}>
+                  {product.category}
+                </div>
+
+                {/* Hot Badge */}
+                {product.inStock && (
+                  <motion.div
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.3rem',
+                      background: 'rgba(13, 27, 42, 0.9)',
+                      color: 'var(--pink)',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
+                      fontSize: '0.7rem',
+                      fontWeight: 900,
+                      border: '1px solid var(--pink)'
+                    }}
+                  >
+                    <Flame size={12} />
+                    HOT
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Product Info */}
+              <div style={{
+                padding: '1.5rem',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}>
+                <div>
+                  <h3 style={{
+                    fontSize: '1.1rem',
+                    fontWeight: 900,
+                    marginBottom: '0.5rem',
+                    color: 'var(--text-primary)'
+                  }}>
+                    {product.name}
+                  </h3>
+
+                  <p style={{
+                    color: '#A8C5D1',
+                    fontSize: '0.85rem',
+                    marginBottom: '1rem',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}>
+                    {product.description}
+                  </p>
+
+                  {/* Rating */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    marginBottom: '1rem'
+                  }}>
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={14}
+                        style={{
+                          color: i < Math.floor(product.rating) ? 'var(--cyan)' : 'rgba(0, 217, 255, 0.3)',
+                          fill: i < Math.floor(product.rating) ? 'var(--cyan)' : 'none'
+                        }}
+                      />
+                    ))}
+                    <span style={{ fontSize: '0.75rem', color: '#A8C5D1' }}>
+                      {product.rating} ({product.reviews})
+                    </span>
+                  </div>
+                </div>
+
+                {/* Price and Button */}
+                <div>
+                  <div style={{
+                    background: 'linear-gradient(135deg, var(--pink), #FF1493)',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '8px',
+                    marginBottom: '1rem',
+                    textAlign: 'center'
+                  }}>
+                    <div style={{
+                      fontSize: '0.8rem',
+                      color: 'rgba(255, 255, 255, 0.8)',
+                      marginBottom: '0.2rem'
+                    }}>
+                      Price
+                    </div>
+                    <div style={{
+                      fontSize: '1.5rem',
+                      fontWeight: 900,
+                      color: '#fff'
+                    }}>
+                      ₦{product.price.toLocaleString()}
+                    </div>
+                  </div>
+
+                  <motion.a
+                    href={generateWhatsAppLink(WHATSAPP_MSGS.BUY(product.name, product.description))}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-gold"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    style={{
+                      width: '100%',
+                      textDecoration: 'none',
+                      textAlign: 'center'
+                    }}
+                  >
+                    <ShoppingCart size={16} />
+                    Buy on WhatsApp
+                  </motion.a>
                 </div>
               </div>
-              <div style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                  <div>
-                    <h3 style={{ fontSize: '1.1rem', marginBottom: '0.3rem' }}>{item.name}</h3>
-                    <p style={{ color: '#8892B0', fontSize: '0.8rem' }}>{item.condition}</p>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div className="gold-text" style={{ fontSize: '1.3rem', fontWeight: '900' }}>{item.price}</div>
-                  </div>
-                </div>
-                <a
-                  href={generateWhatsAppLink(WHATSAPP_MSGS.BUY(item.name, item.condition))}
-                  target="_blank"
-                  className="btn-gold"
-                  style={{ width: '100%' }}
-                >
-                  <ShoppingCart size={18} /> Purchase via WhatsApp
-                </a>
-              </div>
-            </div>
+            </motion.div>
           ))}
+        </motion.div>
+
+        {/* Empty State */}
+        {filteredProducts.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            style={{
+              textAlign: 'center',
+              padding: '4rem 2rem'
+            }}
+          >
+            <Filter size={48} style={{ color: 'var(--cyan)', marginBottom: '1rem', opacity: 0.5 }} />
+            <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>No products found</h3>
+            <p style={{ color: '#A8C5D1' }}>Try adjusting your search or filters</p>
+          </motion.div>
+        )}
       </div>
     </div>
   );
