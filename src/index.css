@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap');
+
 :root {
   --navy: #0A192F;
   --navy-light: #112240;
@@ -12,7 +14,6 @@
   --font-main: 'Outfit', sans-serif; /* Premium feel */
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap');
 
 * {
   margin: 0;

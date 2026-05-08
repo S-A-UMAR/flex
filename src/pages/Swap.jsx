@@ -9,9 +9,7 @@ const Swap = () => {
   const [want, setWant] = useState('');
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <div 
       className="container"
       style={{ paddingTop: '120px', minHeight: '100vh', position: 'relative' }}
     >
@@ -67,9 +65,8 @@ const Swap = () => {
             </div>
           </div>
 
-          <motion.div 
+          <div 
             style={{ marginTop: '3rem', textAlign: 'center' }}
-            whileHover={{ scale: 1.05 }}
           >
             <a
               href={generateWhatsAppLink(WHATSAPP_MSGS.SWAP(have || '[item]', want || '[item]'), 'SECONDARY')}
@@ -83,10 +80,10 @@ const Swap = () => {
             <p style={{ marginTop: '1rem', fontSize: '0.8rem', color: '#8892B0' }}>
               * Valuations are based on current market rates and item condition.
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

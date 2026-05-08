@@ -9,16 +9,8 @@ const Hero = () => {
       <FloatingCP />
       <div className="container">
         <div className="hero-split">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ zIndex: 2, textAlign: 'center' }}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              style={{ 
+          <div style={{ zIndex: 2, textAlign: 'center' }}>
+            <div style={{ 
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '0.5rem', 
@@ -31,7 +23,7 @@ const Hero = () => {
             >
               <Sparkles size={14} className="gold-text" />
               <span style={{ fontSize: '0.75rem', fontWeight: '900', letterSpacing: '2px' }}>MOBILE ELITE TRADING</span>
-            </motion.div>
+            </div>
             
             <h1 style={{ fontSize: 'clamp(3.5rem, 15vw, 6rem)', lineHeight: 0.85, marginBottom: '1.5rem' }}>
               FLEX <br />
@@ -52,15 +44,9 @@ const Hero = () => {
                 <span>INSTANT MOBILE DELIVERY</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            style={{ position: 'relative', marginTop: '3rem' }}
-          >
-            {/* Social Media Stack */}
+          <div style={{ position: 'relative', marginTop: '3rem' }}>
             <div style={{ 
               display: 'flex', 
               justifyContent: 'center', 
@@ -73,7 +59,7 @@ const Hero = () => {
                 { name: 'Facebook', img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=400&auto=format&fit=crop', rotate: 0, y: 0 },
                 { name: 'Instagram', img: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?q=80&w=400&auto=format&fit=crop', rotate: 15, y: 20 }
               ].map((social, idx) => (
-                <motion.div
+                <div
                   key={idx}
                   style={{
                     width: idx === 1 ? '140px' : '110px',
@@ -85,36 +71,10 @@ const Hero = () => {
                     transform: `rotateY(${social.rotate}deg) translateY(${social.y}px)`,
                     zIndex: idx === 1 ? 2 : 1
                   }}
-                  animate={{ 
-                    y: [social.y, social.y - 15, social.y],
-                    rotateY: [social.rotate, social.rotate + 5, social.rotate]
-                  }}
-                  transition={{ repeat: Infinity, duration: 4 + idx, ease: "easeInOut" }}
                 />
               ))}
             </div>
-            
-            {/* Floating CP Hint */}
-            <motion.div
-              style={{
-                position: 'absolute',
-                top: '-20px',
-                right: '10%',
-                background: 'var(--navy-light)',
-                padding: '8px 16px',
-                borderRadius: '12px',
-                border: '1px solid var(--gold)',
-                fontSize: '0.7rem',
-                fontWeight: 'bold',
-                color: 'var(--gold)',
-                boxShadow: '0 0 15px var(--gold-glow)'
-              }}
-              animate={{ x: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-            >
-              +10,800 CP STOCK
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

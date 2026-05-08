@@ -34,9 +34,7 @@ const Market = () => {
   const filteredItems = filter === 'All' ? items : items.filter(item => item.category === filter);
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <div 
       className="container"
       style={{ paddingTop: '100px', paddingBottom: '100px' }}
     >
@@ -58,9 +56,8 @@ const Market = () => {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
             {cpItems.map(cp => (
-              <motion.div
+              <div
                 key={cp.id}
-                whileTap={{ scale: 0.95 }}
                 onClick={() => window.open(generateWhatsAppLink(WHATSAPP_MSGS.CURRENCY('CODM CP', cp.name)), '_blank')}
                 style={{
                   background: 'rgba(255,255,255,0.03)',
@@ -113,13 +110,9 @@ const Market = () => {
 
       {/* Main Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-        <AnimatePresence mode="popLayout">
           {filteredItems.map(item => (
-            <motion.div
-              layout
+            <div
               key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               className="glass-card"
               style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
             >
@@ -150,11 +143,10 @@ const Market = () => {
                   <ShoppingCart size={18} /> Purchase via WhatsApp
                 </a>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </AnimatePresence>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

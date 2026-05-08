@@ -2,16 +2,10 @@ import React from 'react';
 import Hero from '../components/Hero';
 import TrustBar from '../components/TrustBar';
 import BentoGrid from '../components/BentoGrid';
-import { motion } from 'framer-motion';
 
 const Home = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div>
       <Hero />
       <TrustBar />
       <BentoGrid />
@@ -25,7 +19,7 @@ const Home = () => {
           <a href="/market" className="btn-gold" style={{ padding: '1rem 3rem', fontSize: '1.2rem' }}>Visit The Marketplace</a>
         </div>
       </section>
-    </motion.div>
+    </div>
   );
 };
 

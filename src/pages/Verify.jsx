@@ -29,9 +29,7 @@ const steps = [
 
 const Verify = () => {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <div 
       className="container"
       style={{ paddingTop: '120px', paddingBottom: '80px', position: 'relative' }}
     >
@@ -45,14 +43,10 @@ const Verify = () => {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', marginBottom: '5rem' }}>
         {steps.map((step, index) => (
-          <motion.div 
+          <div 
             key={index} 
             className="glass-card" 
             style={{ padding: '2.5rem', textAlign: 'center', position: 'relative' }}
-            whileHover={{ y: -10 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.1 }}
           >
              <div style={{ 
                position: 'absolute', 
@@ -72,7 +66,7 @@ const Verify = () => {
              <div style={{ marginBottom: '1.5rem' }}>{step.icon}</div>
              <h3 style={{ marginBottom: '0.8rem', fontSize: '1.4rem', fontWeight: 'bold' }}>{step.title}</h3>
              <p style={{ color: '#8892B0', fontSize: '0.95rem', lineHeight: 1.5 }}>{step.desc}</p>
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -97,7 +91,7 @@ const Verify = () => {
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

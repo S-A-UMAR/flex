@@ -46,13 +46,9 @@ const BentoGrid = () => {
       </h2>
       <div className="bento-grid">
         {services.map((service, index) => (
-          <motion.div
+          <div
             key={index}
             className="glass-card"
-            whileHover={{ scale: 1.02 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             style={{
               padding: '2rem',
               display: 'flex',
@@ -74,7 +70,7 @@ const BentoGrid = () => {
             >
               Get Rates →
             </a>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

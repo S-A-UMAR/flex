@@ -52,10 +52,8 @@ const Navbar = () => {
             borderRadius: '20px',
             border: '1px solid rgba(0, 255, 0, 0.2)'
           }}>
-            <motion.div
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              style={{ width: 6, height: 6, borderRadius: '50%', background: '#00FF00' }}
+            <div
+              style={{ width: 6, height: 6, borderRadius: '50%', background: '#00FF00', opacity: 0.8 }}
             />
             <span style={{ fontSize: '0.7rem', color: '#00FF00', fontWeight: '900', textTransform: 'uppercase' }}>Online</span>
           </div>
