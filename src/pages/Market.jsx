@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Gem, Star, TrendingUp, Zap, ChevronRight } from 'lucide-react';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
 import FloatingCP from '../components/FloatingCP';
@@ -74,7 +73,7 @@ const Market = () => {
                 <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{cp.name}</div>
                 <div className="gold-text" style={{ fontSize: '0.9rem', fontWeight: '900' }}>{cp.price}</div>
                 <div style={{ fontSize: '0.6rem', color: '#8892B0', marginTop: '0.3rem' }}>{cp.discount}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

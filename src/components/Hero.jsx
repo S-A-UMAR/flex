@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Shield, Zap, Sparkles } from 'lucide-react';
 import FloatingCP from './FloatingCP';
 

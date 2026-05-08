@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { CheckCircle2, ShieldCheck, UserCheck, Globe, Youtube, Instagram, Music2 } from 'lucide-react';
 import { generateWhatsAppLink, WHATSAPP_MSGS } from '../utils/whatsapp';
 import FloatingCP from '../components/FloatingCP';
