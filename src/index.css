@@ -1,0 +1,121 @@
+:root {
+  --navy: #0A192F;
+  --navy-light: #112240;
+  --navy-lighter: #233554;
+  --blue: #0052CC;
+  --gold: #D4AF37;
+  --gold-glow: rgba(212, 175, 55, 0.4);
+  --text-primary: #CCD6F6;
+  --text-secondary: #8892B0;
+  --glass-bg: rgba(10, 25, 47, 0.8);
+  --glass-border: rgba(212, 175, 55, 0.3);
+  --font-main: 'Outfit', sans-serif; /* Premium feel */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* Mobile-First Layout Adjustments */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
+  color: var(--navy);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* Floating CP Icon Animation */
+@keyframes float-cp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.floating-cp {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  animation: float-cp linear infinite;
+  color: var(--gold);
+  filter: drop-shadow(0 0 5px var(--gold));
+}
+
+/* Bento Grid Mobile */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 10px;
+}
+
+.gold-text {
+  background: linear-gradient(to bottom, #D4AF37, #F9D976);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+}
